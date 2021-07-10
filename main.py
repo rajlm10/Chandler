@@ -21,8 +21,8 @@ app = Flask(__name__)
 
 
 
-nltk.download('wordnet')
-nltk.download('stopwords')
+#nltk.download('wordnet')
+#nltk.download('stopwords')
 
 
 #Utility functions to help preprocess text and map conntractions
