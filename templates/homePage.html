@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chandler by Raj</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900|Ubuntu:400,700&display=swap" rel="stylesheet">
+
+    <!--CSS stylesheets-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homeStyles1.css') }}">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/c6c866193b.js" crossorigin="anonymous"></script>
+
+    <!--bootstrap Scripts-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="https://img.icons8.com/emoji/48/000000/upside-down-face.png" type="image/gif" sizes="16x16">
+</head>
+
+<body>
+  <div class="topnav">
+    <a class="active" href="https://rajsangani.me">About Me</a>
+    <a href="https://parade.com/1079501/stephanieosmanski/sarcastic-quotes/">Samples</a>
+    <a href="https://github.com/rajlm10/Chandler/blob/main/README.md">Docs</a>
+    <a href="https://github.com/rajlm10/Chandler/blob/main/README.md" target="_blank">Tips</a>
+
+  </div>
+
+    <div class="jumbotron" id="title">
+      <div class="pull-left">
+      <h2>Chandler</h2>
+      </div>
+      <div class="clearfix"></div>
+
+    </div>
+
+
+
+
+    <form class="" action="http://localhost:5000/details" method="post">
+      <div id="textContent" class="form-group">
+        <label for="comment">I can detect sarcasm! Try Me!</label>
+        <textarea id="content" name="para" class="form-control" rows="1" id="comment" required></textarea>
+      </div>
+      <button type="submit" id="sumButton" class="btn btn-outline-danger btn-lg">Sarcasm?</button>
+    </form>
+
+</body>
+</html>
+
