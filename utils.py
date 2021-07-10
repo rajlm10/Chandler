@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from nltk.stem import WordNetLemmatizer
 import nltk
 from nltk.corpus import stopwords
