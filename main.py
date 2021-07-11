@@ -99,6 +99,12 @@ class CustomUnpickler(pickle.Unpickler):
     def find_class(self, module, name):
         if name == 'Encoder':
             return Encoder
+        if name== 'PositionalEncoding':
+            return PositionalEncoding
+        if name=='EncoderLayer':
+            return EncoderLayer
+        if name=='MultiHeadAttention':
+            return MultiHeadAttention
         return super().find_class(module, name)
 
 
