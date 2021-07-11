@@ -94,8 +94,17 @@ def predict(encoder,tokenized_sentences):
   predictions=np.argmax(tf.keras.layers.Softmax()(logits),axis=1)
   return predictions
 
+class CustomUnpickler(pickle.Unpickler):
+
+    def find_class(self, module, name):
+        if name == 'Encoder':
+            return Encoder
+        return super().find_class(module, name)
+
+
 tokenizer=pickle.load(open('models/tokenizer.sav', 'rb'))
-loaded_model = pickle.load(open('models/finalized_model (1).sav', 'rb'))
+#loaded_model = pickle.load(open('models/finalized_model (1).sav', 'rb'))
+loaded_model =CustomUnpickler(open('models/finalized_model (1).sav', 'rb')).load()
 
 print("Tokenizer and Model Loaded")
 
