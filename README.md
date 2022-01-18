@@ -8,6 +8,16 @@ I will try and expain each section of the code here and also provide excerpts fr
 ## Quick Note
 For those of you who solely want to achieve high performance I would recommend using a pre-trained BERT model from Hugging Face and fine-tuning it on the dataset I have used. However this repo aims at understanding the Encoder model better from scratch. Also note that the final model in production is very light (**29 MB** Weights + **7MB** Tokenizer) whereas BERT or even DISTILBERT for that matter consumes much more space but at the same time is much more robust since it has more Encoder Layers, Feed Forward Network Units and is trained on huge data using different objectives and has a larger vocabulary size. The BERT paper linked above will tell you more about this.
 
+## Details about the size (Feel free to skip this if you don't want the mathematical details)
+For those of you wondering about the size. The model used here has got an embedding dimesnion of **256** has been used opposed to BERT's **768**. The embedding dimension has been decoupled from the hidden_dims (**512**) inside the model (and its Dense layers). So the embedding dimensions are **1/3** of those from **BERT** and hidden dims are **2/3** of **BERT**. Also note that the original paper introduces an intermediate dense projection of dimesnion **intermidiate_dims=3072**. In the original BERT workflow **768** dims from the attention output get projected to **3072** dims which then get projected to **768** dims again. This intermediate projection gives the transformer tremendous power. In my workflow the **256 dims from the attention layer get projected to 512 dims and then again to 256 dims**
+which reduced alot of power. Since I am not using this model of the intention of transfer learning on other downstream tasks and this model is task-specific to detecting sarcasm, it does the job, but to use the encoder in its true sense (few-shot learning on down-stream tasks) we would need much more power (in terms of dimensions). So to sum it up basically we reduce the **BERT_Vocab_Size (30000) X 768 matrix to a Small_Vocab_size X 256 matrix. We reduce the 768 X 3072 and 3072 X 768 matrices to 512 X 256 and 256 X 512 matrix for EACH ENCODER's FFN layers. And furthermore we have only 6 Encoders compared to BERT's 12. Hence the massive reduction.**
+
+_ALBERT uses this technique of decoupling the embedding_dims and hidden_dims in the encoder._
+
+
+## TODO
+Compare performance drop by **sharing weights across all 6 ENCODERs (INSPIRED FROM ALBERT)**
+
 ## Jump To
 
 * <a id="jumpto"></a> [Dataset](#dataset-)
